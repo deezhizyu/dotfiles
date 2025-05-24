@@ -1,0 +1,185 @@
+# Configuration for flavours
+# https://github.com/Misterio77/flavours
+
+shell = "fish -c '{}'"
+
+### PHOCUS GTK THEME ###
+[[items]]
+file = "~/.themes/phocus/scss/gtk-3.0/_colors.scss"
+template = "phocus"
+rewrite = false
+start = "// start colors"
+end = "// end colors"
+hook = "~/.local/bin/harmonyctl reload gtk"
+
+### GTK 4.0 THEME ###
+[[items]]
+file = "~/.config/gtk-4.0/gtk.css"
+template = "gtk4"
+rewrite = false
+start = "/* start colors */"
+end = "/* end colors */"
+hook = "~/.local/bin/harmonyctl reload gtk"
+
+### QT6 THEME ###
+[[items]]
+file = "~/.config/qt6ct/colors/base16.conf"
+template = "qt6ct"
+rewrite = true
+
+### VESKTOP ###
+[[items]]
+file = "~/.var/app/dev.vencord.Vesktop/config/vesktop/settings/quickCss.css"
+template = "vesktop"
+rewrite = true
+
+### QT6CT ###
+[[items]]
+file = "~/.config/qt6ct/colors/base16.conf"
+template = "qt6ct"
+rewrite = true
+
+### NCSPOT ###
+[[items]]
+file = "~/.config/ncspot/config.toml"
+template = "ncspot"
+rewrite = true
+
+### FIREFOX ###
+[[items]]
+file = "~/.var/app/io.gitlab.librewolf-community/.librewolf/l3hoxnuk.default-default/chrome/userChrome.css"
+template = "firefox"
+rewrite = false
+start = "/* start colors */"
+end = "/* end colors */"
+[[items]]
+file = "~/.var/app/io.gitlab.librewolf-community/.librewolf/l3hoxnuk.default-default/chrome/userContent.css"
+template = "firefox"
+rewrite = false
+start = "/* start colors */"
+end = "/* end colors */"
+
+### MPV ###
+# [[items]]
+# file = "~/.config/mpv/mpv.conf"
+# template = "mpv"
+# rewrite = false
+# start = "# start colors"
+# end = "# end colors"
+
+### STEAM ###
+# [[items]]
+# file = "~/.local/share/adwaita-steam/adwaita/colorthemes/base16/base16.css"
+# template = "steam"
+# rewrite = true
+# hook = "~/.local/bin/harmonyctl reload steam"
+
+### ZED EDITOR ###
+[[items]]
+file = "~/.config/zed/themes/base16-flavours.json"
+template = "zed"
+rewrite = true
+
+### HYPRLAND ###
+[[items]]
+file = "~/.config/hypr/extras/colors.conf"
+template = "hyprland"
+rewrite = true
+
+### MAKO DAEMON ###
+# [[items]]
+# file = "~/.config/mako/config"
+# template = "mako"
+# rewrite = false
+# start = "# start colors"
+# end = "# end colors"
+# hook = "~/.local/bin/harmonyctl reload mako"
+
+### SWAYNC DAEMON ###
+[[items]]
+file = "~/.config/swaync/colors.css"
+template = "waybar"
+rewrite = true
+hook = "swaync-client -rs"
+
+### WALKER ###
+[[items]]
+file = "~/.config/walker/themes/base16/colors.css"
+template = "walker"
+rewrite = false
+start = "/* start flavours */"
+end = "/* end flavours */"
+hook = "~/.local/bin/harmonyctl reload walker"
+
+### WAYBAR ###
+[[items]]
+file = "~/.config/waybar/base16.css"
+template = "waybar"
+rewrite = true
+hook = "~/.local/bin/harmonyctl reload waybar"
+
+### ALACRITTY TERMINAL ###
+[[items]]
+file = "~/.config/alacritty/colors.toml"
+template = "alacritty"
+rewrite = true
+
+### FOOT TERMINAL ###
+# [[items]]
+# file = "~/.config/foot/colors.ini"
+# template = "foot"
+# rewrite = true
+
+### GHOSTTY TERMINAL ###
+# [[items]]
+# file = "~/.config/ghostty/themes/base.conf"
+# template = "ghostty"
+# rewrite = true
+# hook = "~/.local/bin/harmonyctl reload ghostty"
+
+### TMUX ###
+# [[items]]
+# file = "~/.config/tmux/base16.conf"
+# template = "tmux"
+# subtemplate = "default"
+# rewrite = true
+# hook = "tmux source ~/.config/tmux/base16.conf"
+
+### FISH SHELL ###
+[[items]]
+file = "~/.config/fish/themes/base16.theme"
+template = "fish"
+rewrite = true
+
+### HELIX EDITOR ###
+# [[items]]
+# file = "~/.config/helix/themes/base16.toml"
+# template = "helix"
+# rewrite = true
+
+### MICRO EDITOR ###
+# [[items]]
+# file = "~/.config/micro/colorschemes/base16.micro"
+# template = "micro"
+# rewrite = true
+
+### SPOTIFY ###
+# [[items]]
+# file = "~/.config/spicetify/Themes/base16/color.ini"
+# template = "spotify"
+# rewrite = true
+# hook = "~/.local/bin/harmonyctl reload spotify"
+# light = false
+
+### NWG DOCK ###
+[[items]]
+file = "~/.config/nwg-dock-hyprland/colors.css"
+template = "nwg-dock"
+rewrite = true
+hook = "~/.local/bin/harmonyctl reload dock"
+
+### NEOVIM ###
+[[items]]
+file = "~/.config/nvim/lua/options.lua"
+template = "nvim"
+rewrite = true

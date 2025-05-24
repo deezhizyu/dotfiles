@@ -1,0 +1,17 @@
+window {
+    background: #161616;        /* base00 */
+    border-color: #393939;      /* base02 */
+}
+
+button,
+image {
+    color: #08bdba;             /* base07 */
+}
+
+button {
+    color: #f2f4f8;             /* base05 */
+}
+
+button:hover {
+    background-color: #393939;  /* base02 */
+}

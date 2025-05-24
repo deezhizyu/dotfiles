@@ -1,0 +1,96 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+  "show_edit_predictions": true,
+  "assistant": {
+    "default_model": {
+      "provider": "copilot_chat",
+      "model": "gpt-4o"
+    },
+    "version": "2"
+  },
+  "ui_font_size": 16,
+  "buffer_font_size": 16,
+  "theme": {
+    "mode": "system",
+    "light": "One Light",
+    "dark": "Catppuccin Mocha"
+  },
+
+  "lsp": {
+    "discord_presence": {
+      "initialization_options": {
+        // Application ID for the rich presence (don't touch it unless you know what you're doing)
+        "application_id": "1263505205522337886",
+        // Base URL for all language icons
+        "base_icons_url": "https://raw.githubusercontent.com/xhyrom/zed-discord-presence/main/assets/icons/",
+
+        "state": "Working on {filename}",
+        "details": "In {workspace}",
+        // URL for the small image
+        "small_image": "{base_icons_url}/{language}.png",
+        "small_text": "{language:u}", // :u capitalizes the first letter
+        // URL for the large image
+        "large_image": "{base_icons_url}/zed.png",
+        "large_text": "Zed",
+
+        // Rules to disable presence in specific workspaces
+        // "rules": {
+        //   "mode": "blacklist", // Can also be "whitelist"
+        //   "paths": ["absolute path"]
+        // },
+
+        "git_integration": true
+      }
+    },
+    "deno": {
+      "settings": {
+        "deno": {
+          "enable": true
+        }
+      }
+    },
+    "angular": {
+      "initialization_options": {
+        "angular_language_server_version": "latest",
+        "typescript_version": "latest"
+      }
+    }
+  },
+
+  "languages": {
+    "TypeScript": {
+      "language_servers": ["angular", "..."]
+    },
+    "HTML": {
+      "language_servers": ["angular", "..."]
+    }
+  }
+
+  // "languages": {
+  //   "TypeScript": {
+  //     "language_servers": [
+  //       "deno",
+  //       "!typescript-language-server",
+  //       "!vtsls",
+  //       "!eslint"
+  //     ],
+  //     "formatter": "language_server"
+  //   },
+  //   "TSX": {
+  //     "language_servers": [
+  //       "deno",
+  //       "!typescript-language-server",
+  //       "!vtsls",
+  //       "!eslint"
+  //     ],
+  //     "formatter": "language_server"
+  //   }
+  // }
+}
