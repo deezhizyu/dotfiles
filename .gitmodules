@@ -1,0 +1,3 @@
+[submodule "steam-presence"]
+	path = steam-presence
+	url = https://github.com/JustTemmie/steam-presence
