@@ -115,7 +115,7 @@
     "on-click-right": "blueman-manager",
   },
   "pulseaudio": {
-    "format": "{icon}  {volume}%",
+    "format": "{icon} {volume}%",
     "tooltip": true,
     "format-muted": "   MUTE",
     "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
@@ -130,12 +130,12 @@
       "phone": "",
       "portable": "",
       "car": "",
-      "default": ["", "", ""],
+      "default": [" ", "  ", "  "],
     },
   },
   "pulseaudio#microphone": {
     "format": "{format_source}",
-    "format-source": "  {volume}%",
+    "format-source": " {volume}%",
     "format-source-muted": "   MUTE",
     "on-click": "pamixer --default-source -t",
     "on-click-right": "GTK_THEME=Adw pavucontrol -t 4",
