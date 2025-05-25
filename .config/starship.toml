@@ -1,0 +1,14 @@
+# Get editor completions based on the config schema
+"$schema" = 'https://starship.rs/config-schema.json'
+
+format = ' $directory${custom.git_branch}\$ '
+
+[custom.git_branch]
+command = 'git branch --show-current | sed -E "/^kan[^/]*\// s,/.*,,"'
+symbol = '🌱 '
+when = true
+require_repo = true
+format = '\[[$symbol$output]($style)\] '
+
+[directory]
+truncate_to_repo = false
