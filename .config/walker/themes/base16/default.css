@@ -28,7 +28,7 @@ slider,
 }
 
 #box {
-    border-radius: 4px;
+    border-radius: 8px;
     background: @base00;
     padding: 32px;
     border: 2px solid @base02;
@@ -40,7 +40,7 @@ slider,
 #search {
     background: @base02;
     border: 2px solid @base02;
-    border-radius: 4px;
+    border-radius: 8px;
     padding: 8px;
     margin-bottom: 16px;
 }
@@ -60,7 +60,7 @@ slider,
 #password,
 #input,
 #typeahead {
-    border-radius: 4px;
+    border-radius: 8px;
 }
 
 #input {
@@ -83,11 +83,15 @@ slider,
 
 child {
     padding: 10px;
-    border-radius: 4px;
+    border-radius: 8px;
 }
 
 child:selected,
 child:hover {
+    transition:
+        background 100ms,
+        color 100ms;
+
     background: @base09;
     color: @base00;
 }
@@ -117,7 +121,7 @@ child:hover {
 
 .aiItem {
     padding: 10px;
-    border-radius: 4px;
+    border-radius: 8px;
     color: @base05;
     background: @base00;
 }
