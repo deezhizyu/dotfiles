@@ -1,4 +1,4 @@
-list=$(find -L "/home/bypass/.local/share/wallpapers/" -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" -o -iname "*.gif" \))
+list=$(find -L "$HOME/.local/share/wallpapers/" -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" -o -iname "*.gif" \))
 
 while walls= read -r path; do
   name=$(b=${path##*/}; echo ${b%.*})
@@ -8,5 +8,5 @@ while walls= read -r path; do
   name=${name//-/ };
   name=${name//   / };
 
-  printf "image=$path;label=${name};exec=swww img --transition-fps 144 --transition-duration 1 -t fade $path && cp $path /home/bypass/.local/share/wallpapers/.wallpaper && /home/bypass/.local/bin/bde u colors && /home/bypass/.local/bin/bde rl pcmanfm;\n"
+  printf "image=$path;label=${name};exec=swww img --transition-fps 144 --transition-duration 1 -t fade $path && cp $path $HOME/.local/share/wallpapers/.wallpaper && $HOME/.local/bin/bde u colors && $HOME/.local/bin/bde rl pcmanfm;\n"
 done <<< "$list"
