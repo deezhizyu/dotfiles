@@ -5,7 +5,7 @@
   "margin-right": 0,
   "margin-left": 0,
   "margin-bottom": 0,
-  "mod": "dock",
+  "mode": "dock",
   "height": 50,
   "exclusive": true,
   "passthrough": false,

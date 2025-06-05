@@ -22,11 +22,12 @@ tooltip {
     background: @base00;
     border: 2px solid @base02;
     border-radius: 8px;
-    font-family: "JetBrainsMono NFP ExtraBold";
+}
+tooltip label {
+    font-weight: 400;
 }
 
 menu {
-    background: transparent;
     background-color: @base00;
     border-radius: 8px;
     border: 2px solid @base01;
@@ -34,11 +35,17 @@ menu {
     padding: 8px;
 }
 menuitem {
-    border-radius: 8px;
-    padding: 7px;
+    margin-top: 2px;
+    margin-bottom: 4px;
+    border-radius: 4px;
+    padding: 5px;
     padding-left: 2px;
     padding-right: 2px;
     font-size: 8px;
+    font-weight: 400;
+}
+menuitem label {
+    font-weight: 400;
 }
 menuitem:hover {
     background: @base01;
