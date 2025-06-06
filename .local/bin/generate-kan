@@ -1,0 +1,44 @@
+#!/usr/bin/env bash
+
+# Function to generate the desired output
+generate_kan() {
+    # Check if at least one argument (number) is provided
+    if [ "$#" -lt 1 ]; then
+        echo "Usage: generate-kan <number> [title]"
+        return 1
+    fi
+
+    # Extract the number (first argument)
+    local number="$1"
+
+    # If the second argument (title) is not provided, use clipboard text
+    if [ "$#" -eq 1 ]; then
+        if command -v wl-paste &> /dev/null; then
+            local title
+            title=$(wl-paste)
+        else
+            echo "Error: No clipboard utility found (install wl-clipboard)."
+            return 1
+        fi
+    else
+        # Combine all remaining arguments into the title
+        shift
+        local title="$*"
+    fi
+
+    # Preprocess the title:
+    # 1. Replace multiple spaces or hyphens with a single space
+    # 2. Trim leading and trailing spaces
+    local sanitized_title
+    sanitized_title=$(echo "$title" | sed 's/[- ]\+/ /g' | sed 's/^ *//;s/ *$//')
+
+    # Convert the title to lowercase, replace spaces with hyphens, and remove unwanted special characters
+    # Keep apostrophes (') intact
+    sanitized_title=$(echo "$sanitized_title" | tr '[:upper:]' '[:lower:]' | sed "s/[^a-z0-9' -]//g" | sed 's/ /-/g')
+
+    # Generate the output
+    echo "kan-$number/$sanitized_title"
+}
+
+# Call the function with the provided arguments
+generate_kan "$@"
