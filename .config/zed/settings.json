@@ -17,7 +17,7 @@
   "agent": {
     "default_model": {
       "provider": "copilot_chat",
-      "model": "gpt-4o"
+      "model": "claude-sonnet-4"
     },
     "model_parameters": [],
     "default_profile": "ask",

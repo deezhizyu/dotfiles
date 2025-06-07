@@ -27,11 +27,13 @@ file = "~/.config/qt6ct/colors/base16.conf"
 template = "qt6ct"
 rewrite = true
 
-### VESKTOP ###
+### DISCORD ###
 [[items]]
-file = "~/.var/app/dev.vencord.Vesktop/config/vesktop/settings/quickCss.css"
+file = "~/Documents/base16-discord/base16.css"
 template = "vesktop"
-rewrite = true
+rewrite = false
+start = "/* start colors */"
+end = "/* end colors */"
 
 ### QT6CT ###
 [[items]]
