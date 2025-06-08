@@ -274,9 +274,9 @@ init_prompt() {
             printf "${BOLD}${BLUE}:: ${RESET}Initializing wallpaper daemon..\n"
 
             if [[ $2 == "--video" ]]; then
-                videowallpaper
+                wp_handler --video
             else
-                wallpaper
+                wp_handler --image
             fi
         ;;
     esac
