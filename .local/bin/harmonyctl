@@ -17,6 +17,10 @@ BOLD='\033[1m'
 UNDERLINE='\033[4m'
 RESET='\033[0m'
 
+WALLPAPER="$HOME/.local/share/wallpapers/.wallpaper"
+VIDEO_WALLPAPER="$HOME/.local/share/wallpapers/.video_wallpaper"
+REFRESH_RATE=$(hyprctl monitors all | sed -n 's/.*@\([0-9]*\.[0-9]*\) at.*/\1/p' | awk '{print ($1 == int($1)) ? int($1) : int($1) + 1}')
+
 print_logo() {
     printf "${BLUE} _   _    _    ____  __  __  ___  _   ___   __
 | | | |  / \  |  _ \|  \/  |/ _ \| \ | \ \ / /
@@ -267,11 +271,52 @@ init_prompt() {
    	        sleep 1
         ;;
         "wp")
-   	        printf "${BOLD}${BLUE}:: ${RESET}Initializing swww..\n"
-   	        swww-daemon > /dev/null & disown
-   	        swww-daemon --format xrgb > /dev/null & disown
+            printf "${BOLD}${BLUE}:: ${RESET}Initializing wallpaper daemon..\n"
+
+            if [[ $2 == "--video" ]]; then
+                videowallpaper
+            else
+                wallpaper
+            fi
         ;;
     esac
+}
+
+wp_handler() {
+    printf "${BOLD}${BLUE}:: ${RESET}Setting wallpapers..\n"
+
+    killall swww-daemon > /dev/null
+    killall mpvpaper > /dev/null
+
+    if [[ $1 == '--video' ]]; then
+        set_videowallpaper $2
+    elif [[ $1 == '--image' ]]; then
+        set_wallpaper $2
+    else
+        printf "${BOLD}${RED}:: ${RESET}No such option\n"
+    fi
+}
+
+set_wallpaper() {
+    if [[ -f $1 ]]; then
+        cp $1 ${WALLPAPER}
+    fi
+
+    if [[ -f ${WALLPAPER} ]]; then
+        swww-daemon > /dev/null & disown
+        swww-daemon --format xrgb > /dev/null & disown
+        swww img --transition-fps ${REFRESH_RATE} --transition-duration 1 -t fade ${WALLPAPER} > /dev/null & disown
+    fi
+}
+
+set_videowallpaper() {
+    if [[ -f $1 ]]; then
+        cp $1 ${VIDEO_WALLPAPER}
+    fi
+
+    if [[ -f ${VIDEO_WALLPAPER} ]]; then
+        mpvpaper -p -o "--loop=10000 --volume=0 --framedrop=vo" "*" ${VIDEO_WALLPAPER} > /dev/null & disown
+    fi
 }
 
 file_upload() {
@@ -464,12 +509,14 @@ elif [[ $1 == "rl" ]];then
     reload_prompt $2
 
 elif [[ $1 == "wp" ]];then
-    swww img $2
+    wp_handler --image $2
+elif [[ $1 == "vwp" ]];then
+    wp_handler --video $2
 
 elif [[ $1 == "edit" ]];then
-        edit_prompt $2
+    edit_prompt $2
 elif [[ $1 == "e" ]];then
-        edit_prompt $2
+    edit_prompt $2
 
 elif [[ $1 == "cache" ]];then
 	free_cache
@@ -494,7 +541,7 @@ elif [[ $1 == "fonts" ]];then
 	search_fonts
 
 elif [[ $1 == "init" ]];then
-	init_prompt $2
+	init_prompt $2 $3
 
 elif [[ $1 == "up" ]];then
 	file_upload $2
@@ -510,7 +557,7 @@ elif [[ $1 == "blur" ]];then
 	toggle_blur
 
 elif [[ $1 == "x" ]];then
-        show_expose
+    show_expose
 elif [[ $1 == "expose" ]];then
 	show_expose
 
