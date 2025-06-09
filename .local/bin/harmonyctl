@@ -21,6 +21,9 @@ WALLPAPER="$HOME/.local/share/wallpapers/.wallpaper"
 VIDEO_WALLPAPER="$HOME/.local/share/wallpapers/.video_wallpaper"
 REFRESH_RATE=$(hyprctl monitors all | sed -n 's/.*@\([0-9]*\.[0-9]*\) at.*/\1/p' | awk '{print ($1 == int($1)) ? int($1) : int($1) + 1}')
 
+WALLPAPER_TIMESTAMP=$(date -r $WALLPAPER +%s)
+VIDEO_WALLPAPER_TIMESTAMP=$(date -r $VIDEO_WALLPAPER +%s)
+
 print_logo() {
     printf "${BLUE} _   _    _    ____  __  __  ___  _   ___   __
 | | | |  / \  |  _ \|  \/  |/ _ \| \ | \ \ / /
@@ -273,7 +276,7 @@ init_prompt() {
         "wp")
             printf "${BOLD}${BLUE}:: ${RESET}Initializing wallpaper daemon..\n"
 
-            if [[ $2 == "--video" ]]; then
+            if [[ ${VIDEO_WALLPAPER_TIMESTAMP} -gt ${WALLPAPER_TIMESTAMP} ]]; then
                 wp_handler --video
             else
                 wp_handler --image
