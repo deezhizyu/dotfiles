@@ -7,14 +7,10 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
-  "languages": {
-    "Plain Text": {
-      "show_edit_predictions": true
-    }
-  },
   "icon_theme": "JetBrains New UI Icons (Dark)",
   "show_edit_predictions": false,
   "agent": {
+    "play_sound_when_agent_done": true,
     "default_model": {
       "provider": "copilot_chat",
       "model": "claude-sonnet-4"
@@ -23,9 +19,9 @@
     "default_profile": "ask",
     "version": "2"
   },
+
   "ui_font_size": 16,
   "buffer_font_size": 16,
-
   "buffer_font_family": "JetBrainsMono Nerd Font Mono",
   "theme": {
     "mode": "system",
@@ -50,6 +46,12 @@
     "button": false
   },
 
+  "languages": {
+    "Plain Text": {
+      "show_edit_predictions": true
+    }
+  },
+
   "lsp": {
     "discord_presence": {
       "initialization_options": {
@@ -64,6 +66,13 @@
         "large_text": "Zed",
 
         "git_integration": true
+      }
+    },
+    "eslint": {
+      "settings": {
+        "codeActionOnSave": {
+          "rules": ["simple-import-sort/imports"]
+        }
       }
     }
   }
