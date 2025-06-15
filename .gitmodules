@@ -1,3 +1,7 @@
 [submodule "steam-presence"]
 	path = steam-presence
 	url = https://github.com/JustTemmie/steam-presence
+[submodule ".themes/phocus"]
+	path = /home/andrii/.themes/phocus
+	url = https://github.com/deezhizyu/phocus-gtk
+
