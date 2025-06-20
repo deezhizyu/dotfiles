@@ -247,6 +247,7 @@
       "src": "bash -c ~/.config/walker/scripts/themes.sh",
       "parser": "kv"
     },
+
     {
       "name": "mainmenu",
       "placeholder": "Search",
