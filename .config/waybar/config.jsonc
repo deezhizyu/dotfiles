@@ -13,12 +13,18 @@
   "reload_style_on_change": true,
   "tray": {
     "icon-size": 14,
-    "spacing": 10,
+    "spacing": 10
   },
 
   // ==========[ ENABLED WAYBAR MODULES ]=========== //
   "modules-left": ["custom/logo", "wlr/taskbar"],
-  "modules-center": ["hyprland/workspaces"],
+  "modules-center": [
+    "custom/cpu#usage",
+    "custom/mem#usage",
+    "custom/gpu#usage",
+    "custom/gpu#mem",
+    "custom/gpu#temp"
+  ],
   "modules-right": [
     "group/systray",
     "hyprland/language",
@@ -27,7 +33,7 @@
     "battery",
     "clock",
     "custom/weather",
-    "custom/power",
+    "custom/power"
   ],
 
   // ==========[ STANDARD WAYBAR MODULES ]========== //
@@ -49,21 +55,21 @@
       "(\\d\\. )?(.*)Minecraft": "<span>󰍳 </span> Minecraft",
       "(.*)[Ll]unar [Cc]lient": "<span>󰍳 </span> Minecraft",
       "(\\d\\. )?(.*)Code - OSS": "<span>󰨞 </span> VS Code",
-      "Search(.*)": "<span> </span> Search $1",
+      "Search(.*)": "<span> </span> Search $1"
     },
-    "separate-outputs": false,
+    "separate-outputs": false
   },
   "hyprland/workspaces": {
     "format": "{}",
     "active-only": false,
     "persistent-workspaces": {},
     "on-scroll-up": "hyprctl dispatch workspace e-1",
-    "on-scroll-down": "hyprctl dispatch workspace e+1",
+    "on-scroll-down": "hyprctl dispatch workspace e+1"
   },
   "hyprland/language": {
     "format": "{} ",
     "format-en": "EN",
-    "format-uk": "UA",
+    "format-uk": "UA"
   },
   "wlr/taskbar": {
     "format": "{icon}",
@@ -80,15 +86,15 @@
       "Picture-in-Picture",
       "Volume Control",
       "Windscribe",
-      "dojo-voice",
-    ],
+      "dojo-voice"
+    ]
   },
   "clock": {
     "format": "     {:%H:%M\n<sub>%m/%d/%Y</sub>}",
-    "tooltip-format": "{:%a, %b %e, %Y}",
+    "tooltip-format": "{:%a, %b %e, %Y}"
   },
   "battery": {
-    "format": " {}%",
+    "format": " {}%"
   },
   "network": {
     "interface": "enp3s0",
@@ -102,7 +108,7 @@
     "tooltip-format-disconnected": "Disconnected",
     "max-length": 50,
     "on-click": "nm-connection-editor",
-    "on-click-right": "nm-connection-editor",
+    "on-click-right": "nm-connection-editor"
   },
   "bluetooth": {
     "format": "",
@@ -112,7 +118,7 @@
     "tooltip-format-connected": "   {controller_alias}\n{device_enumerate}",
     "tooltip-format-enumerate-connected": "{device_alias}\t({device_address})",
     "on-click": "blueman-manager",
-    "on-click-right": "blueman-manager",
+    "on-click-right": "blueman-manager"
   },
   "pulseaudio": {
     "format": "{icon} {volume}%",
@@ -130,8 +136,8 @@
       "phone": "",
       "portable": "",
       "car": "",
-      "default": [" ", "  ", "  "],
-    },
+      "default": [" ", "  ", "  "]
+    }
   },
   "pulseaudio#microphone": {
     "format": "{format_source}",
@@ -141,7 +147,7 @@
     "on-click-right": "GTK_THEME=Adw pavucontrol -t 4",
     "on-scroll-up": "pamixer --default-source -i 1",
     "on-scroll-down": "pamixer --default-source -d 1",
-    "scroll-step": 5,
+    "scroll-step": 5
   },
 
   // ==========[ SYSTEM TRAY HOVER GROUP ]========== //
@@ -151,32 +157,32 @@
       "transition-duration": 500,
       "children-class": "not-power",
       "click-to-reveal": true,
-      "transition-left-to-right": false,
+      "transition-left-to-right": false
     },
-    "modules": ["custom/tray", "tray"],
+    "modules": ["custom/tray", "tray"]
   },
 
   // ==========[ CUSTOM WAYBAR MODULES ]========== //
   "custom/tray": {
     "tooltip": false,
-    "format": "󰅁",
+    "format": "󰅁"
   },
   "custom/logo": {
     "tooltip": false,
     "format": "󰣇",
     "on-click": "walker -m applications",
-    "on-click-right": "harmonyctl expose",
+    "on-click-right": "harmonyctl expose"
   },
   "custom/expose": {
     "tooltip": false,
     "format": "󰨑",
-    "on-click": "harmonyctl expose",
+    "on-click": "harmonyctl expose"
   },
   "custom/power": {
     "tooltip": false,
     "format": "",
     "on-click-right": "walker -m mainmenu",
-    "on-click": "walker -m mainmenu",
+    "on-click": "walker -m mainmenu"
   },
   "custom/spotify": {
     "tooltip": false,
@@ -185,7 +191,7 @@
     "escape": true,
     "exec": "$HOME/.config/waybar/scripts/mediaplayer.sh",
     "on-click": "playerctl play-pause",
-    "on-click-right": "activate",
+    "on-click-right": "activate"
   },
   "custom/weather": {
     "format": "{}°",
@@ -193,6 +199,45 @@
     "interval": 3600,
     "on-click": "gnome-weather",
     "exec": "wttrbar --custom-indicator '{ICON}   {FeelsLikeC}' --nerd --hide-conditions --location $(cat ~/.config/wttrloc.txt)",
-    "return-type": "json",
+    "return-type": "json"
   },
+  "custom/cpu#usage": {
+    "format": "{}% {icon}",
+    "format-icons": "  ",
+    "tooltip": false,
+    "on-click": "top",
+    "exec": "top -bn1 | grep 'Cpu(s)' | awk '{printf(\"%.0f\", 100 - $8)}'",
+    "interval": 1
+  },
+  "custom/mem#usage": {
+    "format": "{}% {icon}",
+    "format-icons": "  ",
+    "tooltip": false,
+    "on-click": "free",
+    "exec": "free | awk '/Mem:/ {printf(\"%.0f\", $3/$2 * 100)}' | tr -d '\n'",
+    "interval": 1
+  },
+  "custom/gpu#usage": {
+    "format": "{} / ",
+    "tooltip": false,
+    "on-click": "nvtop",
+    "exec": "nvtop -s | jq '.[].gpu_util' | sed -E 's/\"(.*?)\"/\\1/'",
+    "interval": 1
+  },
+  "custom/gpu#mem": {
+    "format": "{} {icon}",
+    "format-icons": "󰾲",
+    "tooltip": false,
+    "on-click": "nvtop",
+    "exec": "nvtop -s | jq '.[].mem_util' | sed -E 's/\"(.*?)\"/\\1/'",
+    "interval": 1
+  },
+  "custom/gpu#temp": {
+    "format": "{}°C {icon}",
+    "format-icons": "",
+    "tooltip": false,
+    "on-click": "nvtop",
+    "exec": "nvtop -s | jq '.[].temp' | sed -E 's/\"(.*?)C\"/\\1/'",
+    "interval": 1
+  }
 }

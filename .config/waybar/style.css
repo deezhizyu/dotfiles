@@ -1,60 +1,60 @@
 @import url("base16.css");
 
 * {
-    font-family: "Google Sans Display Medium";
-    transition: all 0.3s ease;
-    font-size: 14px;
-    font-weight: 700;
-    border-radius: 8px;
+  font-family: "Google Sans Display Medium";
+  transition: all 0.3s ease;
+  font-size: 14px;
+  font-weight: 700;
+  border-radius: 8px;
 }
 
 window#waybar {
-    color: @base05;
-    background: rgba(22, 22, 27, 0.65);
-    background: @base00;
-    border-top: 2px solid rgba(33, 33, 39, 0.25);
-    border-top: 2px solid @base01;
-    border-radius: 0;
+  color: @base05;
+  background: rgba(22, 22, 27, 0.65);
+  background: @base00;
+  border-top: 2px solid rgba(33, 33, 39, 0.25);
+  border-top: 2px solid @base01;
+  border-radius: 0;
 }
 
 tooltip {
-    color: @base05;
-    background: @base00;
-    border: 2px solid @base02;
-    border-radius: 8px;
+  color: @base05;
+  background: @base00;
+  border: 2px solid @base02;
+  border-radius: 8px;
 }
 tooltip label {
-    font-weight: 400;
+  font-weight: 400;
 }
 
 menu {
-    background-color: @base00;
-    border-radius: 8px;
-    border: 2px solid @base01;
-    color: @base05;
-    padding: 8px;
+  background-color: @base00;
+  border-radius: 8px;
+  border: 2px solid @base01;
+  color: @base05;
+  padding: 8px;
 }
 menuitem {
-    margin-top: 2px;
-    margin-bottom: 4px;
-    border-radius: 4px;
-    padding: 5px;
-    padding-left: 2px;
-    padding-right: 2px;
-    font-size: 8px;
-    font-weight: 400;
+  margin-top: 2px;
+  margin-bottom: 4px;
+  border-radius: 4px;
+  padding: 5px;
+  padding-left: 2px;
+  padding-right: 2px;
+  font-size: 8px;
+  font-weight: 400;
 }
 menuitem label {
-    font-weight: 400;
+  font-weight: 400;
 }
 menuitem:hover {
-    background: @base01;
-    color: @base05;
+  background: @base01;
+  color: @base05;
 }
 
 hr {
-    border: none;
-    border-top: 1px solid @base02;
+  border: none;
+  border-top: 1px solid @base02;
 }
 
 #clock,
@@ -71,177 +71,221 @@ hr {
 #custom-expose,
 #custom-notifications,
 #workspaces button,
-#tray {
-    border-radius: 8px;
-    background: @base01;
-    color: @base05;
-    margin: 3px;
-    margin-top: 7px;
-    margin-bottom: 6px;
-    padding: 12px;
-    padding-bottom: 0px;
-    padding-top: 0px;
+#tray,
+#custom-gpu,
+#custom-cpu,
+#custom-mem {
+  border-radius: 8px;
+  background: @base01;
+  color: @base05;
+  margin: 3px;
+  margin-top: 7px;
+  margin-bottom: 6px;
+  padding: 12px;
+  padding-bottom: 0px;
+  padding-top: 0px;
 }
 
 #language {
-    margin-top: 2px;
+  margin-top: 2px;
 }
 
 #tray {
-    padding-right: 12px;
+  padding-right: 12px;
 }
 
 #network {
-    border-bottom-right-radius: 0px;
-    border-top-right-radius: 0px;
-    margin-right: 0;
-    padding-right: 6px;
-    padding-left: 13px;
-    padding-bottom: 2px;
-    padding-top: 2px;
-    font-size: 15px;
-    font-family: "ZedMono NFP ExtraBold";
+  border-bottom-right-radius: 0px;
+  border-top-right-radius: 0px;
+  margin-right: 0;
+  padding-right: 6px;
+  padding-left: 13px;
+  padding-bottom: 2px;
+  padding-top: 2px;
+  font-size: 15px;
+  font-family: "ZedMono NFP ExtraBold";
 }
 
 #bluetooth {
-    border-bottom-left-radius: 0px;
-    border-top-left-radius: 0px;
-    margin-left: 0;
-    padding-right: 15px;
-    padding-left: 10px;
-    padding-bottom: 2px;
-    padding-top: 2px;
-    font-size: 15px;
-    font-family: "ZedMono NFP ExtraBold";
+  border-bottom-left-radius: 0px;
+  border-top-left-radius: 0px;
+  margin-left: 0;
+  padding-right: 15px;
+  padding-left: 10px;
+  padding-bottom: 2px;
+  padding-top: 2px;
+  font-size: 15px;
+  font-family: "ZedMono NFP ExtraBold";
 }
 
 #clock {
-    padding-top: 1px;
-    font-size: 13px;
+  padding-top: 1px;
+  font-size: 13px;
 }
 
 #pulseaudio {
-    min-width: 52px;
-    margin-right: 0px;
-    padding-right: 0px;
-    padding-left: 10px;
-    border-top-right-radius: 0px;
-    border-bottom-right-radius: 0px;
-    font-size: 12.75px;
+  min-width: 52px;
+  margin-right: 0px;
+  padding-right: 0px;
+  padding-left: 10px;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+  font-size: 12.75px;
 }
 
 #pulseaudio.microphone {
-    margin-left: 0px;
-    padding-left: 2px;
-    padding-right: 10px;
-    border-top-left-radius: 0px;
-    border-bottom-left-radius: 0px;
+  margin-left: 0px;
+  padding-left: 2px;
+  padding-right: 10px;
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
 }
 
 #pulseaudio.muted,
 #pulseaudio.source-muted {
-    color: @base08;
+  color: @base08;
 }
 
 #workspaces {
-    background: @base01;
-    margin-top: 7px;
-    margin-bottom: 6px;
-    margin-right: 0;
-    border-radius: 8px;
-    padding-right: 4px;
-    padding-left: 4px;
-    padding-top: 0px;
+  background: @base01;
+  margin-top: 7px;
+  margin-bottom: 6px;
+  margin-right: 0;
+  border-radius: 8px;
+  padding-right: 4px;
+  padding-left: 4px;
+  padding-top: 0px;
 }
 #workspaces:hover {
-    border: 0px transparent;
+  border: 0px transparent;
 }
 #workspaces button {
-    border-radius: 8px;
-    border: 0px;
-    color: @base05;
-    margin: 6px;
-    margin-top: 8px;
-    margin-left: 0;
-    margin-right: 0;
-    padding-left: 12px;
-    padding-right: 12px;
+  border-radius: 8px;
+  border: 0px;
+  color: @base05;
+  margin: 6px;
+  margin-top: 8px;
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: 12px;
+  padding-right: 12px;
 }
 #workspaces button:hover {
-    color: @base09;
+  color: @base09;
 }
 #workspaces button.active {
-    color: @base09;
+  color: @base09;
 }
 #workspaces button.urgent {
-    color: @base0A;
+  color: @base0A;
 }
 
 #taskbar button {
-    padding: 8px;
-    margin-left: 2px;
-    margin-right: 2px;
-    margin-bottom: 5px;
-    margin-top: 7px;
-    border-radius: 8px;
+  padding: 8px;
+  margin-left: 2px;
+  margin-right: 2px;
+  margin-bottom: 5px;
+  margin-top: 7px;
+  border-radius: 8px;
 }
 #taskbar button.active {
-    background-color: @base02;
+  background-color: @base02;
 }
 
 #custom-logo {
-    margin: 8px;
-    font-size: 21.5px;
-    background-color: @base00;
-    border: 2px solid @base00;
-    color: @base0D;
-    margin-bottom: 5px;
-    font-family: "ZedMono NFP ExtraBold";
-    border-radius: 8px;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: contain;
+  margin: 8px;
+  font-size: 21.5px;
+  background-color: @base00;
+  border: 2px solid @base00;
+  color: @base0D;
+  margin-bottom: 5px;
+  font-family: "ZedMono NFP ExtraBold";
+  border-radius: 8px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 #custom-logo:hover {
-    color: @base05;
+  color: @base05;
 }
 
 #custom-power {
-    margin-right: 10px;
-    margin-left: 4px;
-    font-family: "ZedMono NFP ExtraBold";
-    font-size: 18px;
-    color: @base02;
+  margin-right: 10px;
+  margin-left: 4px;
+  font-family: "ZedMono NFP ExtraBold";
+  font-size: 18px;
+  color: @base02;
 }
 #custom-power:hover {
-    color: @base0D;
+  color: @base0D;
 }
 
 #custom-expose {
-    margin-left: 0px;
-    margin-right: 12px;
-    padding-left: 5px;
-    padding-right: 20px;
-    padding-top: 2px;
-    padding-bottom: 2px;
-    border-top-left-radius: 0px;
-    border-bottom-left-radius: 0px;
-    font-size: 13px;
+  margin-left: 0px;
+  margin-right: 12px;
+  padding-left: 5px;
+  padding-right: 20px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+  font-size: 13px;
 }
 #custom-expose:hover {
-    color: @base09;
+  color: @base09;
 }
 
 #custom-tray {
-    font-size: 24px;
-    color: @base02;
-    margin-right: 6px;
-    margin-left: 6px;
-    font-family: "ZedMono NFP ExtraBold";
-    font-size: 18px;
+  font-size: 24px;
+  color: @base02;
+  margin-right: 6px;
+  margin-left: 6px;
+  font-family: "ZedMono NFP ExtraBold";
+  font-size: 18px;
 }
 
 #custom-spotify {
-    font-size: 13px;
-    margin-left: 0px;
+  font-size: 13px;
+  margin-left: 0px;
+}
+
+#custom-cpu.usage {
+  margin-right: 0;
+  padding-right: 0;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  padding-right: 4;
+}
+
+#custom-mem.usage {
+  margin-left: 0;
+  padding-left: 0;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  padding-right: 4;
+}
+
+#custom-gpu.usage {
+  margin-right: 0;
+  padding-right: 0;
+  padding-left: 10;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+#custom-gpu.mem {
+  padding-left: 0;
+  margin-left: 0;
+  margin-right: 0;
+  border-radius: 0;
+}
+
+#custom-gpu.temp {
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: 4;
+  padding-right: 10;
+
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
 }
