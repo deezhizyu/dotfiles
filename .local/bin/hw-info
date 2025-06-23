@@ -1,0 +1,43 @@
+#!/bin/bash
+
+CACHE="/tmp/hw-info"
+LOCK="$CACHE.lock"
+
+CURRENT_TIMESTAMP=$(date +%s)
+
+if [ -e "$CACHE" ]; then
+    CACHE_TIMESTAMP=$(date -r "$CACHE" +%s 2>/dev/null || echo 0)
+else
+    CACHE_TIMESTAMP=0
+fi
+
+if ! [ -e $CACHE ] || [ $((CURRENT_TIMESTAMP - CACHE_TIMESTAMP)) -gt 3 ]; then
+    if ! [ -e $LOCK ]; then
+        touch $LOCK
+
+        CPU_USAGE=$(top -bn1 | grep 'Cpu(s)' | awk '{printf("%.0f", 100 - $8)}')
+        CPU_TEMP=$(sensors | grep -E 'Core 0|Tctl|Package id 0' | head -1 | awk '{gsub(/[+°C]/, "", $2); printf("%.0f", $2)}')
+        RAM_USAGE=$(free | awk '/Mem:/ {printf("%.0f", $3/$2 * 100)}' | tr -d '\n')
+        
+        NVTOP_DATA=$(nvtop -s | jq '.[]')
+        GPU_UTIL=$(echo "$NVTOP_DATA" | jq -r '.gpu_util')
+        GPU_MEM=$(echo "$NVTOP_DATA" | jq -r '.mem_util')
+        GPU_TEMP=$(echo "$NVTOP_DATA" | jq -r '.temp' | sed 's/C$//')
+        
+        cat > "$CACHE" << EOF
+CPU_USAGE=$CPU_USAGE
+CPU_TEMP=$CPU_TEMP
+RAM_USAGE=$RAM_USAGE
+GPU_UTIL=$GPU_UTIL
+GPU_MEM=$GPU_MEM
+GPU_TEMP=$GPU_TEMP
+EOF
+        rm $LOCK
+    fi
+fi
+
+if [ -e "$CACHE" ]; then
+    source "$CACHE"
+fi
+
+echo "${!1:-$GPU_MEM}"

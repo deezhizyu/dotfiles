@@ -136,7 +136,7 @@ hr {
 #pulseaudio.microphone {
   margin-left: 0px;
   padding-left: 2px;
-  padding-right: 10px;
+  padding-right: 4px;
   border-top-left-radius: 0px;
   border-bottom-left-radius: 0px;
 }
@@ -257,8 +257,17 @@ hr {
   padding-right: 4;
 }
 
+#custom-cpu.temp {
+  margin-right: 0;
+  margin-left: 0;
+  padding-left: 0;
+  padding-right: 10;
+  border-radius: 0;
+}
+
 #custom-mem.usage {
   margin-left: 0;
+  margin-right: 0;
   padding-left: 0;
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
@@ -266,6 +275,7 @@ hr {
 }
 
 #custom-gpu.usage {
+  margin-left: 6;
   margin-right: 0;
   padding-right: 0;
   padding-left: 10;
@@ -282,7 +292,6 @@ hr {
 
 #custom-gpu.temp {
   margin-left: 0;
-  margin-right: 0;
   padding-left: 4;
   padding-right: 10;
 

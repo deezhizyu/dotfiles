@@ -17,14 +17,16 @@
   },
 
   // ==========[ ENABLED WAYBAR MODULES ]=========== //
-  "modules-left": ["custom/logo", "wlr/taskbar"],
-  "modules-center": [
+  "modules-left": [
+    "custom/logo",
     "custom/cpu#usage",
+    "custom/cpu#temp",
     "custom/mem#usage",
     "custom/gpu#usage",
     "custom/gpu#mem",
     "custom/gpu#temp"
   ],
+  "modules-center": ["hyprland/workspaces"],
   "modules-right": [
     "group/systray",
     "hyprland/language",
@@ -206,38 +208,46 @@
     "format-icons": "  ",
     "tooltip": false,
     "on-click": "top",
-    "exec": "top -bn1 | grep 'Cpu(s)' | awk '{printf(\"%.0f\", 100 - $8)}'",
-    "interval": 1
+    "exec": "$HOME/.local/bin/hw-info CPU_USAGE",
+    "interval": 3
+  },
+  "custom/cpu#temp": {
+    "format": "{}°C {icon}",
+    "format-icons": "",
+    "tooltip": false,
+    "on-click": "sensors",
+    "exec": "$HOME/.local/bin/hw-info CPU_TEMP",
+    "interval": 3
   },
   "custom/mem#usage": {
     "format": "{}% {icon}",
     "format-icons": "  ",
     "tooltip": false,
     "on-click": "free",
-    "exec": "free | awk '/Mem:/ {printf(\"%.0f\", $3/$2 * 100)}' | tr -d '\n'",
-    "interval": 1
+    "exec": "$HOME/.local/bin/hw-info RAM_USAGE",
+    "interval": 3
   },
   "custom/gpu#usage": {
     "format": "{} / ",
     "tooltip": false,
     "on-click": "nvtop",
-    "exec": "nvtop -s | jq '.[].gpu_util' | sed -E 's/\"(.*?)\"/\\1/'",
-    "interval": 1
+    "exec": "$HOME/.local/bin/hw-info GPU_UTIL",
+    "interval": 3
   },
   "custom/gpu#mem": {
     "format": "{} {icon}",
     "format-icons": "󰾲",
     "tooltip": false,
     "on-click": "nvtop",
-    "exec": "nvtop -s | jq '.[].mem_util' | sed -E 's/\"(.*?)\"/\\1/'",
-    "interval": 1
+    "exec": "$HOME/.local/bin/hw-info GPU_MEM",
+    "interval": 3
   },
   "custom/gpu#temp": {
     "format": "{}°C {icon}",
     "format-icons": "",
     "tooltip": false,
     "on-click": "nvtop",
-    "exec": "nvtop -s | jq '.[].temp' | sed -E 's/\"(.*?)C\"/\\1/'",
-    "interval": 1
+    "exec": "$HOME/.local/bin/hw-info GPU_TEMP",
+    "interval": 3
   }
 }
