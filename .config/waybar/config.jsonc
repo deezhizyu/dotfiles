@@ -125,9 +125,9 @@
   "pulseaudio": {
     "format": "{icon} {volume}%",
     "tooltip": true,
-    "format-muted": "   MUTE",
+    "format-muted": " MUTE",
     "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
-    "on-click-right": "GTK_THEME=Adw pavucontrol",
+    "on-click-right": "pavucontrol",
     "on-scroll-up": "pamixer -i 1",
     "on-scroll-down": "pamixer -d 1",
     "scroll-step": 1,
@@ -144,9 +144,9 @@
   "pulseaudio#microphone": {
     "format": "{format_source}",
     "format-source": " {volume}%",
-    "format-source-muted": "   MUTE",
+    "format-source-muted": "  MUTE  ",
     "on-click": "pamixer --default-source -t",
-    "on-click-right": "GTK_THEME=Adw pavucontrol -t 4",
+    "on-click-right": "pavucontrol -t 4",
     "on-scroll-up": "pamixer --default-source -i 1",
     "on-scroll-down": "pamixer --default-source -d 1",
     "scroll-step": 5
@@ -221,7 +221,7 @@
   },
   "custom/mem#usage": {
     "format": "{}% {icon}",
-    "format-icons": "  ",
+    "format-icons": "\uefc5  ",
     "tooltip": false,
     "on-click": "free",
     "exec": "$HOME/.local/bin/hw-info RAM_USAGE",

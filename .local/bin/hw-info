@@ -2,17 +2,36 @@
 
 CACHE="/tmp/hw-info"
 LOCK="$CACHE.lock"
+AUDIO_LOCK="$CACHE-audio.lock"
+
+MAX_TEMP=85
 
 CURRENT_TIMESTAMP=$(date +%s)
 
 if [ -e "$CACHE" ]; then
-    CACHE_TIMESTAMP=$(date -r "$CACHE" +%s 2>/dev/null || echo 0)
+    CACHE_TIMESTAMP=$(date -r "$CACHE" +%s || echo 0)
 else
     CACHE_TIMESTAMP=0
 fi
 
+if [ -e "$LOCK" ]; then
+    LOCK_TIMESTAMP=$(date -r "$LOCK" +%s || echo 0)
+else
+    LOCK_TIMESTAMP=0
+fi
+
+if [ -e "$AUDIO_LOCK" ]; then
+    AUDIO_LOCK_TIMESTAMP=$(date -r "$AUDIO_LOCK" +%s || echo 0)
+
+    if [ $((CURRENT_TIMESTAMP - AUDIO_LOCK_TIMESTAMP)) -gt 60 ]; then
+      rm $AUDIO_LOCK
+    fi
+else
+    AUDIO_LOCK_TIMESTAMP=0
+fi
+
 if ! [ -e $CACHE ] || [ $((CURRENT_TIMESTAMP - CACHE_TIMESTAMP)) -gt 3 ]; then
-    if ! [ -e $LOCK ]; then
+    if ! [ -e $LOCK ] || [ $((CURRENT_TIMESTAMP - LOCK_TIMESTAMP)) -gt 1 ]; then
         touch $LOCK
 
         CPU_USAGE=$(top -bn1 | grep 'Cpu(s)' | awk '{printf("%.0f", 100 - $8)}')
@@ -23,6 +42,12 @@ if ! [ -e $CACHE ] || [ $((CURRENT_TIMESTAMP - CACHE_TIMESTAMP)) -gt 3 ]; then
         GPU_UTIL=$(echo "$NVTOP_DATA" | jq -r '.gpu_util')
         GPU_MEM=$(echo "$NVTOP_DATA" | jq -r '.mem_util')
         GPU_TEMP=$(echo "$NVTOP_DATA" | jq -r '.temp' | sed 's/C$//')
+
+        if ! [ -e $AUDIO_LOCK ] && ([ $GPU_TEMP -gt $MAX_TEMP ] || [ $CPU_TEMP -gt $MAX_TEMP ]); then
+          touch $AUDIO_LOCK
+
+          canberra-gtk-play -f "$HOME/.local/share/sounds/core-meltdown.ogg" & disown
+        fi
         
         cat > "$CACHE" << EOF
 CPU_USAGE=$CPU_USAGE

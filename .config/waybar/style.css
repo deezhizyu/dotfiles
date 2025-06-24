@@ -1,7 +1,7 @@
 @import url("base16.css");
 
 * {
-  font-family: "Google Sans Display Medium";
+  font-family: "GoogleSans Nerd Font Display Medium";
   transition: all 0.3s ease;
   font-size: 14px;
   font-weight: 700;
@@ -10,18 +10,21 @@
 
 window#waybar {
   color: @base05;
+
   background: rgba(22, 22, 27, 0.65);
   background: @base00;
   border-top: 2px solid rgba(33, 33, 39, 0.25);
   border-top: 2px solid @base01;
+
   border-radius: 0;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
 }
 
 tooltip {
   color: @base05;
   background: @base00;
   border: 2px solid @base02;
-  border-radius: 8px;
 }
 tooltip label {
   font-weight: 400;
@@ -92,6 +95,9 @@ hr {
 
 #tray {
   padding-right: 12px;
+}
+#tray menu {
+  border-radius: 15px;
 }
 
 #network {
