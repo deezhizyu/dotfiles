@@ -25,6 +25,7 @@ tooltip {
   color: @base05;
   background: @base00;
   border: 2px solid @base02;
+  border-radius: 15px;
 }
 tooltip label {
   font-weight: 400;
@@ -97,7 +98,7 @@ hr {
   padding-right: 12px;
 }
 #tray menu {
-  border-radius: 15px;
+  border-radius: 12px;
 }
 
 #network {

@@ -200,7 +200,7 @@
     "tooltip": true,
     "interval": 3600,
     "on-click": "gnome-weather",
-    "exec": "wttrbar --custom-indicator '{ICON}   {FeelsLikeC}' --nerd --hide-conditions --location $(cat ~/.config/wttrloc.txt)",
+    "exec": "wttrbar --custom-indicator '{ICON} {FeelsLikeC}' --nerd --hide-conditions --location $(cat ~/.config/wttrloc.txt)",
     "return-type": "json"
   },
   "custom/cpu#usage": {

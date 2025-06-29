@@ -65,4 +65,8 @@ if [ -e "$CACHE" ]; then
     source "$CACHE"
 fi
 
-echo "${!1:-$GPU_MEM}"
+if [ -n "$1" ] && [ -z "${!1}" ]; then
+    echo "-"
+else
+    echo "${!1}"
+fi
