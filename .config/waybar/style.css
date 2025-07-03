@@ -171,14 +171,19 @@ hr {
   border: 0px;
   color: @base05;
   margin: 6px;
-  margin-top: 8px;
+  margin-top: 3px;
+  margin-bottom: 3px;
   margin-left: 0;
   margin-right: 0;
   padding-left: 12px;
   padding-right: 12px;
 }
+#workspaces button:not(:last-child) {
+  margin-right: 2px;
+}
 #workspaces button:hover {
   color: @base09;
+  background-color: @base02;
 }
 #workspaces button.active {
   color: @base09;
